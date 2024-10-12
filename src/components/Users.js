@@ -8,7 +8,6 @@ import classes from "./Users.module.css";
 //   { id: "u2", name: "Manuel" },
 //   { id: "u3", name: "Julie" },
 // ];
-
 class Users extends Component {
   //in constructor() you can do initialization work like initializing state
   constructor() {
@@ -17,6 +16,17 @@ class Users extends Component {
       showUsers: true,
       more: "Test",
     };
+  }
+
+  componentDidUpdate() {
+    // try{ 
+    //   someCodeWhichMightFail()
+    // } catch(err) {
+    //    handle error
+    //   }
+    if (this.props.users.length === 0) {
+      throw new Error("No users provided!");
+    }
   }
 
   toggleUsersHandler() {
@@ -56,7 +66,6 @@ class Users extends Component {
 
 3/ .bind(this) solution: By calling .bind(this) on toggleUsersHandler, you explicitly bind the function to the current instance of the component. This ensures that when the function is executed, this inside the function still refers to the component instance, allowing you to safely use this.setState() and access other component methods or properties.
  */
-
 
 // const Users = () => {
 //   const [showUsers, setShowUsers] = useState(true);
